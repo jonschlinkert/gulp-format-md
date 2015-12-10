@@ -15,22 +15,21 @@ gulp.task('format', function () {
     .pipe(gulp.dest('.'));
 });
 
-// gulp.task('coverage', function () {
-//   return gulp.src(lint)
-//     .pipe(istanbul())
-//     .pipe(istanbul.hookRequire());
-// });
+gulp.task('coverage', function () {
+  return gulp.src(lint)
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire());
+});
 
-// gulp.task('mocha', ['coverage'], function () {
-//   return gulp.src('test/*.js')
-//     .pipe(mocha({reporter: 'spec'}))
-//     .pipe(istanbul.writeReports());
-// });
+gulp.task('mocha', ['coverage'], function () {
+  return gulp.src('test/*.js')
+    .pipe(mocha({reporter: 'spec'}))
+    .pipe(istanbul.writeReports());
+});
 
-// gulp.task('eslint', function () {
-//   return gulp.src(lint)
-//     .pipe(eslint())
-// });
+gulp.task('eslint', function () {
+  return gulp.src(lint)
+    .pipe(eslint())
+});
 
-// gulp.task('default', ['mocha', 'eslint']);
-gulp.task('default', ['format']);
+gulp.task('default', ['mocha', 'eslint']);
