@@ -1,6 +1,6 @@
 {
   "name": "gulp-format-md",
-  "description": "Gulp plugin for beautifying markdown using remarkable.",
+  "description": "Gulp plugin for beautifying markdown using pretty-remarkable.",
   "version": "0.1.0",
   "homepage": "https://github.com/jonschlinkert/gulp-format-md",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -11,6 +11,8 @@
   "license": "MIT",
   "files": [
     "index.js",
+    "format.js",
+    "middleware.js",
     "utils.js"
   ],
   "main": "index.js",
@@ -36,14 +38,25 @@
     "gulp-mocha": "^2.2.0",
     "mocha": "*"
   },
+  "keywords": [
+    "beautify",
+    "format",
+    "formatter",
+    "gulp",
+    "gulpplugin",
+    "markdown",
+    "md",
+    "prettify",
+    "pretty",
+    "remarkable"
+  ],
   "verb": {
     "related": {
       "list": [
-        "gulp"
+        "gulp",
+        "pretty-remarkable",
+        "remarkable"
       ]
-    },
-    "includes": {
-      "foo": "bar"
     },
     "plugins": {
       "./index.js": {}
