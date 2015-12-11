@@ -13,6 +13,9 @@ insert_final_newline = true
 trim_trailing_whitespace = false
 insert_final_newline = false
 
+[{.verb.md,readme.md}]
+insert_final_newline = true
+
 [test/**]
 trim_trailing_whitespace = false
 insert_final_newline = false
