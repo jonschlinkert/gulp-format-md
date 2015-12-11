@@ -10,8 +10,9 @@
 var format = require('./format');
 
 module.exports = function(options) {
+  var opts = {formatmd: options};
   return function(file, next) {
-    format(file, options);
+    format(file, opts);
     next();
   };
 };

@@ -11,8 +11,8 @@ var utils = require('./utils');
 var format = require('./format');
 
 module.exports = function(options) {
+  var opts = {formatmd: options};
   return utils.through.obj(function(file, enc, next) {
-    next(null, format(file, options));
+    next(null, format(file, opts));
   });
 };
-
