@@ -11,7 +11,11 @@ var utils = require('./utils');
 
 module.exports = function(file, options) {
   // pass some extra formatting info to `pretty-remarkable`
-  var opts = utils.extend({author: {}}, options, file.options);
+  var opts = utils.extend({author: {}, formatmd: {}}, options, file.options);
+  if (!isMarkdown(file.extname) && opts.formatmd.force !== true) {
+    return file;
+  }
+
   opts.username = opts.author.username;
   opts.name = opts.author.name;
   file.data = file.data || {};
@@ -22,7 +26,6 @@ module.exports = function(file, options) {
 
   // prettify
   str = pretty(str, opts);
-  str = str.trim() + (opts.newline ? '\n' : '');
   str = fixParam(str);
   str = fixList(str);
 
@@ -31,13 +34,18 @@ module.exports = function(file, options) {
     str = str.split(key).join(table);
   });
 
-  if (file.data.toc) {
-    str = str.split('<!-- toc -->').join(file.data.toc);
-  }
-
+  str = str.trim() + (opts.newline === false ? '' : '\n');
   file.contents = new Buffer(str);
   return file;
 };
+
+/**
+ * Return true if a file is a markdown file
+ */
+
+function isMarkdown(ext) {
+  return /^\.?(md|mdown|mkdown|markdown)$/.test(ext);
+}
 
 /**
  * Fix list formatting

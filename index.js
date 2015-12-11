@@ -15,3 +15,4 @@ module.exports = function(options) {
     next(null, format(file, options));
   });
 };
+
