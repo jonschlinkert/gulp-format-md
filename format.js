@@ -11,41 +11,41 @@ var utils = require('./utils');
 
 module.exports = function(file, options) {
   // pass some extra formatting info to `pretty-remarkable`
-  var opts = utils.extend({author: {}, formatmd: {}}, options, file.options);
-  if (!isMarkdown(file.extname) && opts.formatmd.force !== true) {
-    return file;
-  }
-
-  opts.username = opts.author.username;
-  opts.name = opts.author.name;
+  var opts = utils.extend({author: {}}, options, file.options);
   file.data = file.data || {};
 
   var str = file.contents.toString();
-  var res = extractTables(str);
-  str = res.str;
+  var extracted = extractTables(str);
+  str = extracted.str;
 
   // prettify
   str = pretty(str, opts);
+  str = str.trim() + (opts.newline ? '\n' : '');
   str = fixParam(str);
   str = fixList(str);
 
-  res.keys.forEach(function(key) {
-    var table = res.tables[key].trim();
+  extracted.keys.forEach(function(key) {
+    var table = extracted.tables[key].trim();
     str = str.split(key).join(table);
   });
 
-  str = str.trim() + (opts.newline === false ? '' : '\n');
+  /**
+   * TOC injection is done here since formatting can mess
+   * up the toc structure, so we want to do this last
+   */
+
+  if (file.data.toc) {
+    if (typeof file.insertToc === 'function') {
+      str = file.insertToc(str, file.data.toc);
+    }
+    if (typeof file.tocUnescape === 'function') {
+      str = file.tocUnescape(str);
+    }
+  }
+
   file.contents = new Buffer(str);
   return file;
 };
-
-/**
- * Return true if a file is a markdown file
- */
-
-function isMarkdown(ext) {
-  return /^\.?(md|mdown|mkdown|markdown)$/.test(ext);
-}
 
 /**
  * Fix list formatting
