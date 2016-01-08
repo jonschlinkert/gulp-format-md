@@ -22,7 +22,6 @@ module.exports = function(file, options) {
   str = pretty(str, opts);
   str = str.trim() + (opts.newline ? '\n' : '');
   str = fixParam(str);
-  str = fixList(str);
 
   extracted.keys.forEach(function(key) {
     var table = extracted.tables[key].trim();
@@ -36,7 +35,8 @@ module.exports = function(file, options) {
 
   if (file.data.toc) {
     if (typeof file.insertToc === 'function') {
-      str = file.insertToc(str, file.data.toc);
+      var toc = file.data.toc.replace(/\n+/, '\n');
+      str = file.insertToc(str, toc);
     }
     if (typeof file.tocUnescape === 'function') {
       str = file.tocUnescape(str);
@@ -46,14 +46,6 @@ module.exports = function(file, options) {
   file.contents = new Buffer(str);
   return file;
 };
-
-/**
- * Fix list formatting
- */
-
-function fixList(str) {
-  return str.replace(/([ ]{1,4}[+-] \[?[^)]+\)?)\n\n\* /gm, '$1\n* ');
-}
 
 /**
  * Fix params
