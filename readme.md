@@ -23,10 +23,6 @@ gulp.task('format-md', function () {
 });
 ```
 
-## Foo
-
-This is foo.
-
 ## Options
 
 ### force
