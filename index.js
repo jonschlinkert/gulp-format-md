@@ -7,18 +7,4 @@
 
 'use strict';
 
-var utils = require('./utils');
-var format = require('./format');
-
-module.exports = function(options) {
-  return utils.through.obj(function(file, enc, next) {
-    if (!isMarkdown(file.extname)) {
-      return next(null, file);
-    }
-    next(null, format(file, options));
-  });
-};
-
-function isMarkdown(ext) {
-  return /^\.?(md|mdown|mkdown|markdown)$/.test(ext);
-}
+module.exports = require('./lib/plugin');
