@@ -10,10 +10,8 @@
   },
   "license": "MIT",
   "files": [
-    "index.js",
-    "format.js",
-    "middleware.js",
-    "utils.js"
+    "lib/",
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
