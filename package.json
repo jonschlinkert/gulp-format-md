@@ -10,8 +10,8 @@
   },
   "license": "MIT",
   "files": [
-    "lib/",
-    "index.js"
+    "index.js",
+    "lib"
   ],
   "main": "index.js",
   "engines": {
@@ -22,20 +22,19 @@
   },
   "dependencies": {
     "extend-shallow": "^2.0.1",
-    "get-value": "^2.0.3",
+    "get-value": "^2.0.5",
     "lazy-cache": "^1.0.3",
     "plugin-error": "^0.1.2",
-    "pretty-remarkable": "^0.2.0",
+    "pretty-remarkable": "^0.2.2",
     "remarkable": "^1.6.2",
-    "sections": "^0.1.1",
+    "sections": "^0.1.8",
     "through2": "^2.0.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^1.1.1",
-    "gulp-istanbul": "^0.10.3",
-    "gulp-mocha": "^2.2.0",
-    "mocha": "*"
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-istanbul": "^0.10.4",
+    "gulp-mocha": "^2.2.0"
   },
   "keywords": [
     "beautify",
@@ -50,19 +49,24 @@
     "remarkable"
   ],
   "verb": {
-    "layout": "default",
-    "tasks": [
-      "readme"
-    ],
-    "plugins": {
-      "./": {}
-    },
     "related": {
       "list": [
         "gulp",
         "pretty-remarkable",
         "remarkable"
       ]
-    }
+    },
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": ["gulp-format-md"],
+    "toc": false,
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [
+      "verb"
+    ]
   }
 }

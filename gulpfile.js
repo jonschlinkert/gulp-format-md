@@ -9,27 +9,27 @@ var format = require('./plugin');
 
 var lint = ['gulpfile.js', 'index.js', 'lib/*.js', 'test/*.js'];
 
-gulp.task('format', function () {
+gulp.task('format', function() {
   return gulp.src('readme.md')
     .pipe(format())
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('coverage', function () {
+gulp.task('coverage', function() {
   return gulp.src(lint)
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('mocha', ['coverage'], function () {
+gulp.task('mocha', ['coverage'], function() {
   return gulp.src('test/*.js')
     .pipe(mocha({reporter: 'spec'}))
     .pipe(istanbul.writeReports());
 });
 
-gulp.task('eslint', function () {
+gulp.task('eslint', function() {
   return gulp.src(lint)
-    .pipe(eslint())
+    .pipe(eslint());
 });
 
 gulp.task('default', ['mocha', 'eslint']);
