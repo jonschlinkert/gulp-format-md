@@ -5,18 +5,18 @@ var mocha = require('gulp-mocha');
 var through = require('through2');
 var istanbul = require('gulp-istanbul');
 var eslint = require('gulp-eslint');
-var format = require('./plugin');
+var format = require('./lib/plugin');
 
-var lint = ['gulpfile.js', 'index.js', 'lib/*.js', 'test/*.js'];
+var lint = ['*.js', 'lib/*.js', 'test/*.js'];
 
 gulp.task('format', function() {
-  return gulp.src('readme.md')
+  return gulp.src('README.md')
     .pipe(format())
     .pipe(gulp.dest('.'));
 });
 
 gulp.task('coverage', function() {
-  return gulp.src(lint)
+  return gulp.src(['index.js', 'lib/*.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });
