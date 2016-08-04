@@ -1,7 +1,7 @@
 {
   "name": "gulp-format-md",
   "description": "Gulp plugin for beautifying markdown using pretty-remarkable.",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "homepage": "https://github.com/jonschlinkert/gulp-format-md",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/gulp-format-md",
