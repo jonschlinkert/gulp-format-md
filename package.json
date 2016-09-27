@@ -23,9 +23,9 @@
   "dependencies": {
     "extend-shallow": "^2.0.1",
     "lazy-cache": "^2.0.1",
-    "pretty-remarkable": "^0.3.9",
-    "remarkable": "^1.6.2",
-    "sections": "^0.1.8",
+    "pretty-remarkable": "^0.3.10",
+    "remarkable": "^1.7.0",
+    "sections": "^0.1.9",
     "through2": "^2.0.1"
   },
   "devDependencies": {
@@ -43,6 +43,7 @@
     "gulpplugin",
     "markdown",
     "md",
+    "plugin",
     "prettify",
     "pretty",
     "remarkable"
