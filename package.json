@@ -32,6 +32,7 @@
     "remarkable": "^1.7.1",
     "sections": "^1.0.0",
     "through2": "^2.0.3",
+    "tokenize-comment": "^1.0.3",
     "vinyl": "^2.1.0",
     "write": "^0.3.3"
   },
