@@ -10,38 +10,24 @@
   },
   "license": "MIT",
   "files": [
-    "bin",
     "index.js",
     "lib"
   ],
   "main": "index.js",
-  "bin": {
-    "fmd": "./bin/cli.js"
-  },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=8"
   },
   "scripts": {
     "test": "mocha"
   },
   "dependencies": {
-    "extend-shallow": "^2.0.1",
-    "log-ok": "^0.1.1",
-    "minimist": "^1.2.0",
-    "pretty-remarkable": "^0.4.1",
+    "pretty-remarkable": "^1.0.0",
     "remarkable": "^1.7.1",
     "sections": "^1.0.0",
-    "through2": "^2.0.3",
-    "tokenize-comment": "^1.0.3",
-    "vinyl": "^2.1.0",
-    "write": "^0.3.3"
+    "through2": "^2.0.3"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^4.0.0",
-    "gulp-istanbul": "^1.1.2",
-    "gulp-mocha": "^3.0.1",
-    "mocha": "^3.4.2"
+    "mocha": "^5.2.0"
   },
   "keywords": [
     "beautify",
@@ -57,26 +43,21 @@
     "remarkable"
   ],
   "verb": {
-    "related": {
-      "list": [
-        "gulp",
-        "pretty-remarkable",
-        "remarkable"
-      ]
-    },
+    "toc": false,
     "layout": "default",
     "tasks": [
       "readme"
     ],
-    "plugins": [
-      "./"
-    ],
-    "toc": false,
+    "related": {
+      "list": [
+        "markdown-toc",
+        "pretty-remarkable",
+        "remarkable"
+      ]
+    },
+    "plugins": ["./"],
     "lint": {
       "reflinks": true
-    },
-    "reflinks": [
-      "verb"
-    ]
+    }
   }
 }

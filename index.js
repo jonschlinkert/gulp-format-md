@@ -7,7 +7,7 @@
 
 'use strict';
 
-var format = require('./lib/format');
+const format = require('./lib/format');
 module.exports = require('./lib/plugin');
 module.exports.middleware = require('./lib/middleware');
 module.exports.prettify = format.prettify;
